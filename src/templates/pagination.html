@@ -1,0 +1,29 @@
+<div class="row mt-3 justify-content-center">
+    <nav>
+        <ul class="pagination">
+            {% if products.has_previous %}
+                <li class="page-item">
+                    <a class="page-link" href="?page=1">Principal</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{products.previous_page_number}}">&laquo;</a>
+                </li>
+            {% endif %}
+
+            {% for page in total_pages%}
+                <li class="page-item {% if current == page %} active {% endif %}">
+                    <a class="page-link" href="?page={{page}}">{{page}}</a>
+                </li>
+            {% endfor %}
+
+            {% if products.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{products.next_page_number}}">&raquo;</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="?page={{products.paginator.num_pages}}">Última</a>
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
